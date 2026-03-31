@@ -82,6 +82,7 @@
     </div>
 
     <div class="player">
+        <h2 id="station-name" style="color: #7ce7ff; margin-top: 0; margin-bottom: 15px; font-size: 1.4em;">...</h2>
         <div class="embed-container">
             <iframe src="https://panel.gloryradio.gr/public/glory_radio_plus/embed?theme=dark" frameborder="0" allowtransparency="true" style="width: 100%; min-height: 200px;"></iframe>
         </div>
@@ -139,6 +140,17 @@
                 if (el) el.innerText = text;
             }
         }
+
+        // FETCH STATION NAME
+        fetch('https://panel.gloryradio.gr/api/nowplaying/glory_radio_plus')
+            .then(response => response.json())
+            .then(data => {
+                const stationNameEl = document.getElementById('station-name');
+                if (stationNameEl && data.station && data.station.name) {
+                    stationNameEl.innerText = data.station.name;
+                }
+            })
+            .catch(err => console.error('Error fetching station name:', err));
     });
 
     setInterval(() => {
