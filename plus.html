@@ -36,6 +36,24 @@
         .note { position: fixed; font-size: 35px; color: #fff; text-shadow: 0 0 10px #7ce7ff, 0 0 20px #7ce7ff; z-index: 1; pointer-events: none; animation: noteFall linear infinite; }
         @keyframes noteFall { from { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 15% { opacity: 0.8; } 85% { opacity: 0.8; } to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
     </style>
+    <style>html { display: none; }</style>
+    <script>
+        (async function() {
+            const targetHash = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+            const password = prompt("Please enter the password to access this station:");
+            if (password) {
+                const msgUint8 = new TextEncoder().encode(password);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                if (hashHex === targetHash) {
+                    document.documentElement.style.display = 'block';
+                    return;
+                }
+            }
+            window.location.href = "index.html";
+        })();
+    </script>
 </head>
 
 <body>
