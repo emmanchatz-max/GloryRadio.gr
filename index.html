@@ -287,6 +287,7 @@
 
     <div class="section">
         <h3 id="moreTitle" style="margin-top:0;">More Stations</h3>
+        <a href="https://ko-fi.com/W7W21X2MIS/tiers" target="_blank" class="btn" style="background: linear-gradient(45deg, #ffd700, #ffae00); display: block; margin: 10px auto; max-width: 300px;">🔓 Unlock Full Access & 3+ New Stations</a>
         <a href="plus.html" class="btn" id="plusBtn">Glory Radio Plus</a>
         <a href="relax.html" class="btn" id="relaxBtn">Sleep & Relax</a>
         <a href="country.html" class="btn" id="countryBtn">Country & Southern Gospel</a>
@@ -294,7 +295,7 @@
 
     <div class="section">
         <h3 id="suppTitle" style="margin-top:0;">Support the Station</h3>
-        <button class="btn" id="openDonate" style="background: #ffcf4d; min-width: 150px; color: #000;">Donate Now</button>
+        <a href="https://ko-fi.com/W7W21X2MIS" target="_blank" class="btn" id="openDonate" style="background: #ffcf4d; min-width: 150px; color: #000;">Donate Now</a>
     </div>
 
     <div class="section">
@@ -316,12 +317,6 @@
         const openDonateBtn = document.getElementById('openDonate');
         const closeDonateBtn = document.getElementById('closeBtn');
 
-        if (openDonateBtn) {
-            openDonateBtn.onclick = (e) => { 
-                e.preventDefault();
-                donateModal.style.display = 'flex'; 
-            };
-        }
         if (closeDonateBtn) {
             closeDonateBtn.onclick = () => { donateModal.style.display = 'none'; };
         }
