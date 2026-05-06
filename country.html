@@ -88,6 +88,10 @@
     <style>html { display: none; }</style>
     <script>
         (async function() {
+            if (sessionStorage.getItem("glory_auth") === "true") {
+                document.documentElement.style.display = 'block';
+                return;
+            }
             const targetHash = "d4f7360bf672e7ff9c76551480813fce81ef17572da3cfd0fdbc959aa07a9ac9";
             const password = prompt("Please enter the password to access this station:");
             if (password) {
@@ -96,6 +100,7 @@
                 const hashArray = Array.from(new Uint8Array(hashBuffer));
                 const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
                 if (hashHex === targetHash) {
+                    sessionStorage.setItem("glory_auth", "true");
                     document.documentElement.style.display = 'block';
                     return;
                 }
